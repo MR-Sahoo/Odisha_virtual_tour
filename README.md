@@ -96,29 +96,6 @@ Or use **Live Server** in VS Code.
 
 ---
 
-## 📸 Screenshots
-
-### 🏠 Home Page
-
-_Add project screenshots here._
-
-```
-screenshots/home.png
-```
-
-### 🌡️ Temperature Page
-
-```
-screenshots/weather.png
-```
-
-### 🧠 Quiz
-
-```
-screenshots/quiz.png
-```
-
----
 
 ## 🔮 Future Enhancements
 
