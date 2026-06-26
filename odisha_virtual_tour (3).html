@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odisha Virtual Tour - Explore the Cultural Heritage</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loader">
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+        </div>
+        <div class="loader-text">Welcome to Odisha...</div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <header>
+        <div class="header-top-links">
+            <a href="./temperature.html" class="top-link-btn">🌡️ Temperature</a>
+            <a href="./quiz.html" class="top-link-btn">🧠 Quiz</a>
+        </div>
+        <button class="login-btn" id="open-login-btn">🔐 Login / Signup</button>
+        <div class="header-content">
+            <h1>🕉️ Odisha Virtual Tour 🕉️</h1>
+            <p class="subtitle">Experience the Land of Jagannath - Where Tradition Meets Divinity</p>
+        </div>
+    </header>
+
+    <!-- Login Modal -->
+    <div class="login-modal" id="loginModal">
+        <!-- Animated Odia Character -->
+        <div class="odia-character">
+            <div class="character-body">
+                <div class="character-head"></div>
+                <div class="character-torso"></div>
+                <div class="character-arm arm-left"></div>
+                <div class="character-arm arm-right"></div>
+                <div class="character-leg leg-left"></div>
+                <div class="character-leg leg-right"></div>
+            </div>
+        </div>
+
+        <div class="login-container">
+            <button class="close-btn" id="close-login-btn">&times;</button>
+            
+            <!-- Login Section -->
+            <div class="login-section">
+                <div class="section-header">
+                    <h2>🙏 Welcome Back</h2>
+                    <p>Login to continue your journey</p>
+                </div>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-username">Username or Email</label>
+                        <input type="text" id="login-username" placeholder="Enter your username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" placeholder="Enter your password" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="submit-btn">Login to Explore</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Signup Section -->
+            <div class="signup-section">
+                <div class="section-header">
+                    <h2>🌟 New Visitor?</h2>
+                    <p>Create your account</p>
+                </div>
+                <form id="signup-form">
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" placeholder="Create a password" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="submit-btn signup-btn">Create Account</button>
+                    </div>
+                </form>
+                <p id="auth-message" class="auth-message" aria-live="polite"></p>
+            </div>
+        </div>
+    </div>
+
+    <nav>
+        <button class="nav-btn active" data-destination="home">Home</button>
+        <button class="nav-btn" data-destination="bhubaneswar">Bhubaneswar</button>
+        <button class="nav-btn" data-destination="puri">Puri</button>
+        <button class="nav-btn" data-destination="konark">Konark</button>
+        <button class="nav-btn" data-destination="sambalpur">Sambalpur</button>
+    </nav>
+
+    <div class="container">
+        <!-- Home Page -->
+        <div id="home" class="destination active">
+            <div class="home">
+                <h2>Welcome to Odisha - The Soul of Incredible India</h2>
+                <p>
+                    Discover the mystical land where ancient temples whisper tales of devotion, 
+                    golden beaches embrace the Bay of Bengal, and vibrant traditions paint every corner 
+                    with cultural brilliance. Odisha, the land of Lord Jagannath, invites you to explore 
+                    its architectural marvels, spiritual essence, and natural beauty.
+                </p>
+
+                <div class="destination-grid">
+                    <div class="dest-preview" data-destination="bhubaneswar">
+                        <h3>🏛️ Bhubaneswar</h3>
+                        <p>The Temple City - 500+ ancient temples showcasing Kalinga architecture</p>
+                    </div>
+                    <div class="dest-preview" data-destination="puri">
+                        <h3>🌊 Puri</h3>
+                        <p>The Spiritual Capital - Home of Lord Jagannath and golden beaches</p>
+                    </div>
+                    <div class="dest-preview" data-destination="konark">
+                        <h3>☀️ Konark</h3>
+                        <p>The Sun Temple - UNESCO World Heritage Site and architectural wonder</p>
+                    </div>
+                    <div class="dest-preview" data-destination="sambalpur">
+                        <h3>🎭 Sambalpur</h3>
+                        <p>The Textile Hub - Famous for Sambalpuri sarees and Hirakud Dam</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Bhubaneswar -->
+        <div id="bhubaneswar" class="destination">
+            <div class="dest-header">
+                <h2>🏛️ Bhubaneswar - The Temple City</h2>
+                <p>Capital of Odisha | Gateway to the Golden Triangle</p>
+            </div>
+            <div class="dest-content">
+                <p style="font-size: 1.2em; line-height: 1.8; color: #555; margin-bottom: 30px;">
+                    Bhubaneswar, meaning "Lord of the Universe," is a city where ancient spirituality meets modern progress. 
+                    With over 500 temples dating back to the 6th-13th centuries, it's a living museum of Kalinga architecture.
+                </p>
+
+                <div class="map-embed">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119066.54836014893!2d85.73887719726562!3d20.296058800000015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1909d2d5170aa5%3A0xfc580e2b68b33fa8!2sBhubaneswar%2C%20Odisha!5e0!3m2!1sen!2sin!4v1699887654321!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+
+                <div class="highlights">
+                    <h3>✨ Must Visit Attractions</h3>
+                    <ul>
+                        <li>Lingaraja Temple - 11th century masterpiece dedicated to Lord Shiva</li>
+                        <li>Mukteswar Temple - Known as the "Gem of Odisha Architecture"</li>
+                        <li>Udayagiri & Khandagiri Caves - Ancient Jain rock-cut caves</li>
+                        <li>Rajarani Temple - Famous for its exquisite sculptures</li>
+                        <li>Dhauli Shanti Stupa - Where Emperor Ashoka embraced Buddhism</li>
+                        <li>Nandankanan Zoological Park - Home to white tigers</li>
+                    </ul>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🏺 Historical Significance</h3>
+                        <p>Once the capital of ancient Kalinga, Bhubaneswar was the center of the Kalinga War (261 BCE) 
+                        that transformed Emperor Ashoka. The city preserves magnificent specimens of temple architecture 
+                        spanning over 1,000 years.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🎭 Cultural Heritage</h3>
+                        <p>The city is renowned for its classical Odissi dance, traditional Pattachitra paintings, 
+                        stone carving, and silver filigree work. Annual festivals like Rajarani Music Festival 
+                        celebrate this rich cultural legacy.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🌤️ Best Time to Visit</h3>
+                        <p>October to March offers pleasant weather ideal for temple visits. The temperature ranges 
+                        from 15°C to 30°C. Visit during Shivaratri or Rajarani Music Festival for cultural immersion.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Puri -->
+        <div id="puri" class="destination">
+            <div class="dest-header">
+                <h2>🌊 Puri - The Abode of Lord Jagannath</h2>
+                <p>One of the Four Dhams | Spiritual Capital of Odisha</p>
+            </div>
+            <div class="dest-content">
+                <p style="font-size: 1.2em; line-height: 1.8; color: #555; margin-bottom: 30px;">
+                    Puri is one of the most sacred pilgrimage sites for Hindus, part of the Char Dham. 
+                    The city harmoniously blends spirituality with natural beauty, offering golden beaches alongside 
+                    divine temples.
+                </p>
+
+                <div class="map-embed">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59794.78863396629!2d85.79067597910156!3d19.80557500000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a19c49e5e8d0c77%3A0xb08701c2f63ec03f!2sPuri%2C%20Odisha!5e0!3m2!1sen!2sin!4v1699887854321!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+
+                <div class="highlights">
+                    <h3>✨ Sacred & Scenic Highlights</h3>
+                    <ul>
+                        <li>Jagannath Temple - 12th-century temple with the sacred Trinity</li>
+                        <li>Rath Yatra - World's largest chariot festival (June-July)</li>
+                        <li>Puri Beach - Golden sands and stunning sunrises</li>
+                        <li>Gundicha Temple - The Garden House of Lord Jagannath</li>
+                        <li>Chilika Lake - Asia's largest brackish water lagoon (nearby)</li>
+                        <li>Raghurajpur Heritage Village - Traditional artist village</li>
+                    </ul>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🙏 Spiritual Importance</h3>
+                        <p>The Jagannath Temple is one of the four Char Dham pilgrimage sites. The unique wooden idols 
+                        of Lord Jagannath, Balabhadra, and Subhadra are replaced every 12-19 years in a sacred ceremony 
+                        called Navakalevara.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🎪 The Grand Rath Yatra</h3>
+                        <p>Millions witness the world's largest chariot festival where three massive chariots carry 
+                        the deities from Jagannath Temple to Gundicha Temple. The festival attracts devotees from 
+                        around the globe.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🏖️ Beach Paradise</h3>
+                        <p>Puri Beach offers a perfect blend of spirituality and relaxation. Watch fishermen at work, 
+                        enjoy beach activities, witness spectacular sunrises, and taste fresh seafood at beach shacks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Konark -->
+        <div id="konark" class="destination">
+            <div class="dest-header">
+                <h2>☀️ Konark - The Black Pagoda</h2>
+                <p>UNESCO World Heritage Site | Architectural Marvel of India</p>
+            </div>
+            <div class="dest-content">
+                <p style="font-size: 1.2em; line-height: 1.8; color: #555; margin-bottom: 30px;">
+                    The Konark Sun Temple stands as a testament to India's architectural brilliance and astronomical 
+                    knowledge. Built in the 13th century by King Narasimhadeva I, this magnificent structure is designed 
+                    as a colossal chariot with 24 carved wheels.
+                </p>
+
+                <div class="map-embed">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59700.89471953247!2d86.06809992910156!3d19.88762050000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a1cc008e25dbc09%3A0x73a4d24ee3f67daa!2sKonark%2C%20Odisha!5e0!3m2!1sen!2sin!4v1699888054321!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+
+                <div class="highlights">
+                    <h3>✨ Architectural Wonders</h3>
+                    <ul>
+                        <li>Sun Temple - Massive chariot with 24 elaborately carved wheels</li>
+                        <li>Erotic Sculptures - Intricate carvings depicting human emotions</li>
+                        <li>Konark Dance Festival - Annual classical dance celebration</li>
+                        <li>Archaeological Museum - Houses temple artifacts and sculptures</li>
+                        <li>Chandrabhaga Beach - Pristine beach near the temple</li>
+                        <li>Ramachandi Temple - Scenic temple by the sea</li>
+                    </ul>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🎨 Architectural Genius</h3>
+                        <p>The temple's 24 wheels are sundials that accurately tell time. Each wheel is 12 feet in diameter 
+                        with 8 spokes. The temple was positioned to catch the first rays of sunrise, with the main entrance 
+                        facing east.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>📜 Historical Marvel</h3>
+                        <p>Built using Khondalite rocks, the temple showcases Kalinga architecture at its zenith. 
+                        Originally 229 feet tall, it once served as a navigational landmark for sailors, earning the 
+                        nickname "Black Pagoda."</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🎭 Cultural Significance</h3>
+                        <p>The intricate carvings depict various aspects of life - from royal processions to daily activities. 
+                        The Konark Dance Festival, held annually in December, showcases classical Indian dance forms against 
+                        the temple backdrop.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sambalpur -->
+        <div id="sambalpur" class="destination">
+            <div class="dest-header">
+                <h2>🎭 Sambalpur - The Cultural Heartland</h2>
+                <p>Home of Sambalpuri Culture | Textile & Handicraft Hub</p>
+            </div>
+            <div class="dest-content">
+                <p style="font-size: 1.2em; line-height: 1.8; color: #555; margin-bottom: 30px;">
+                    Sambalpur, situated on the banks of the Mahanadi River, is the cultural and economic hub of Western Odisha. 
+                    Famous for its world-renowned Sambalpuri textiles and the massive Hirakud Dam.
+                </p>
+
+                <div class="map-embed">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d119627.35863396629!2d83.89067597910156!3d21.46557500000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a21cf9747e02ee3%3A0x4b5cc4c94c94f236!2sSambalpur%2C%20Odisha!5e0!3m2!1sen!2sin!4v1699888254321!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+
+                <div class="highlights">
+                    <h3>✨ Key Attractions & Experiences</h3>
+                    <ul>
+                        <li>Hirakud Dam - World's longest earthen dam with breathtaking views</li>
+                        <li>Sambalpuri Sarees - Famous handloom textiles with traditional ikat</li>
+                        <li>Samaleswari Temple - Ancient shrine dedicated to Goddess Samaleswari</li>
+                        <li>Cattle Island - Unique island within Hirakud Reservoir</li>
+                        <li>Ushakothi Wildlife Sanctuary - Rich biodiversity and scenic beauty</li>
+                        <li>Nuakhai Festival - Harvest festival celebrated with grandeur</li>
+                    </ul>
+                </div>
+
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🧵 Textile Heritage</h3>
+                        <p>Sambalpuri textiles, especially the Bandha (tie-dye) technique, are recognized globally. 
+                        The intricate ikat patterns, traditional motifs, and vibrant colors make Sambalpuri sarees 
+                        treasured possessions.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🌊 Hirakud Dam</h3>
+                        <p>One of the longest dams in the world at 16 miles, Hirakud was India's first major multipurpose 
+                        river valley project post-independence. The dam offers stunning sunset views from Gandhi Minar 
+                        and Nehru Minar towers.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>🎉 Cultural Celebrations</h3>
+                        <p>Sambalpur is the birthplace of the Sambalpuri music and dance tradition. The Nuakhai festival, 
+                        celebrating new harvest, is Western Odisha's biggest festival.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <h3>🕉️ Odisha - Where Every Stone Tells a Story 🕉️</h3>
+        <p style="margin-top: 15px;">Experience the divine, witness the cultural richness, and create memories that last forever</p>
+        <p style="margin-top: 10px; font-size: 0.9em;">© 2024 Odisha Virtual Tour | Celebrating India's Cultural Heritage</p>
+    </footer>
+
+    <script src="./app.js"></script>
+</body>
+</html>

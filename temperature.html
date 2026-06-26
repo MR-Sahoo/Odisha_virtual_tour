@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odisha Temperature Search</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-top-links">
+            <a href="./odisha_virtual_tour (3).html" class="top-link-btn">🏠 Home</a>
+            <a href="./quiz.html" class="top-link-btn">🧠 Quiz</a>
+        </div>
+        <div class="header-content">
+            <h1>🌡️ Odisha Temperature Search</h1>
+            <p class="subtitle">Search temperature for Bhubaneswar, Puri, Konark, Sambalpur</p>
+        </div>
+    </header>
+
+    <main class="page-shell">
+        <section class="page-card">
+            <h2>Search Place Temperature</h2>
+            <div class="search-row">
+                <input id="place-search-input" type="text" placeholder="Type place name...">
+                <button id="search-temp-btn" class="page-btn">Search</button>
+            </div>
+            <p>Supported places: `bhubaneswar`, `puri`, `konark`, `sambalpur`.</p>
+            <div id="temperature-result" class="result-box"></div>
+        </section>
+    </main>
+
+    <script src="./temperature.js"></script>
+</body>
+</html>

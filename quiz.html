@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odisha Place Quiz</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-top-links">
+            <a href="./odisha_virtual_tour (3).html" class="top-link-btn">🏠 Home</a>
+            <a href="./temperature.html" class="top-link-btn">🌡️ Temperature</a>
+        </div>
+        <div class="header-content">
+            <h1>🧠 Odisha Quiz Zone</h1>
+            <p class="subtitle">Choose a location and answer 5 questions</p>
+        </div>
+    </header>
+
+    <main class="page-shell">
+        <section class="page-card">
+            <h2>Location Quiz</h2>
+            <div class="search-row">
+                <select id="quiz-place-select">
+                    <option value="bhubaneswar">Bhubaneswar</option>
+                    <option value="puri">Puri</option>
+                    <option value="konark">Konark</option>
+                    <option value="sambalpur">Sambalpur</option>
+                </select>
+                <button id="load-quiz-btn" class="page-btn">Load Quiz</button>
+            </div>
+
+            <form id="quiz-form"></form>
+            <button id="submit-quiz-btn" class="page-btn" style="display:none; margin-top: 8px;">Submit Quiz</button>
+            <div id="quiz-result" class="result-box"></div>
+        </section>
+    </main>
+
+    <script src="./quiz.js"></script>
+</body>
+</html>
