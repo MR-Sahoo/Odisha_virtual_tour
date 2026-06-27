@@ -1,3 +1,32 @@
+`# 🕉️ Odisha Virtual Tour
+
+> Explore the cultural heritage of Odisha through an interactive virtual tourism website powered by APIs.
+
+![HTML](https://img.shields.io/badge/HTML-5-orange?style=for-the-badge\&logo=html5)
+![CSS](https://img.shields.io/badge/CSS-3-blue?style=for-the-badge\&logo=css3)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-yellow?style=for-the-badge\&logo=javascript)
+![API](https://img.shields.io/badge/API-Integrated-green?style=for-the-badge)
+
+## 🌐 Live Demo
+
+🔗 **Live Website:** https://odisha-virtual-tour.onrender.com
+
+> Experience Odisha's rich cultural heritage through an interactive virtual tour with real-time weather updates, Google Maps integration, and engaging tourism features.
+
+---
+
+## 📖 About the Project
+
+Odisha Virtual Tour is a responsive tourism website designed to showcase the rich culture, heritage, and famous tourist destinations of Odisha.
+
+The application provides an engaging user experience with modern animations, API integrations, interactive maps, user authentication, and a tourism quiz.
+
+Whether you're planning a trip or simply exploring Odisha online, this platform offers an immersive digital travel experience.
+
+
+
+
+
 # 🕉️ Odisha Virtual Tour
 
 > Explore the cultural heritage of Odisha through an interactive virtual tourism website powered by APIs.
