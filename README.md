@@ -29,7 +29,7 @@ Whether you're planning a trip or simply exploring Odisha online, this platform 
 - 🏛️ Explore Odisha's Famous Tourist Destinations
 - 🌡️ Live Temperature using Weather API
 - 📍 Google Maps Integration
-- 🔐 Login & Signup System
+- 🔐 Login, Signup & Password Help
 - 🧠 Interactive Tourism Quiz
 - 🎨 Beautiful UI with Animations
 - 🖱️ Custom Animated Cursor
@@ -93,14 +93,21 @@ git clone https://github.com/MR-Sahoo/Odisha_virtual_tour.git
 cd Odisha_virtual_tour
 ```
 
-3. Open the project
+3. Install dependencies and start the app server
 
-Simply open **index.html** in your browser.
+```bash
+npm install
+npm start
+```
 
-Or use **Live Server** in VS Code.
+4. Open `http://localhost:3000/odisha_virtual_tour%20(3).html` in your browser.
 
 ---
 
+The main tour opens behind a login screen. Create an account with **Sign up**, then
+log in to enter the tour; use **Logout** to return to the sign-in screen. Automatic
+password-reset email is not configured, so the **Forgot password?** screen directs
+visitors to contact the site administrator.
 
 ## 🔮 Future Enhancements
 

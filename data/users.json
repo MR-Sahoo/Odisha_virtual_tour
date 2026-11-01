@@ -15,6 +15,14 @@
             "username": "manoranjan sahoo",
             "passwordHash": "1a4d99e3ae7e9b9979483e18dc72aee54ed70cdb4b2d1fb9d541eea2f3630fb3",
             "createdAt": "2026-04-13T09:17:22.498Z"
+        },
+        {
+            "id": "dcd46be5-5e7c-4d6a-9c14-e6acc380b0da",
+            "name": "manoranjan sahoo",
+            "email": "manoranjan2025@gift.edu.in",
+            "username": "manoranjan sahoo",
+            "passwordHash": "0da61a429336947d339f86aac35d4c6c4d893d0229d4fc978e94b2dcfc3e5933",
+            "createdAt": "2026-11-01T09:28:00.842Z"
         }
     ]
 }

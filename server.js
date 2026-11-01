@@ -130,11 +130,13 @@ app.post("/api/login", async (req, res) => {
     );
 
     if (!matchedUser) {
-        return res.status(401).json({ message: "No account found. Please sign up first." });
+        return res.status(401).json({
+            message: "No account matches that email or username. Check your details or sign up."
+        });
     }
 
     if (matchedUser.passwordHash !== hashPassword(password)) {
-        return res.status(401).json({ message: "Incorrect password." });
+        return res.status(401).json({ message: "That password is incorrect. Please try again." });
     }
 
     return res.status(200).json({

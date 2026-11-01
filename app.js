@@ -2,6 +2,21 @@ const cursor = document.querySelector(".cursor");
 const follower = document.querySelector(".cursor-follower");
 const loginModal = document.getElementById("loginModal");
 const authMessage = document.getElementById("auth-message");
+const logoutButton = document.getElementById("logout-btn");
+const AUTH_STORAGE_KEY = "odishaVirtualTourUser";
+const protectedPageElements = document.querySelectorAll("header, nav, .container, footer");
+
+function setPageInert(isInert) {
+    protectedPageElements.forEach((element) => {
+        element.inert = isInert;
+    });
+}
+
+function focusLoginInput() {
+    if (window.innerHeight > 700) {
+        document.getElementById("login-username").focus();
+    }
+}
 
 let mouseX = 0;
 let mouseY = 0;
@@ -49,14 +64,89 @@ function createFireParticles(x, y) {
     }
 }
 
-function openLogin() {
-    loginModal.classList.add("active");
-    document.body.style.overflow = "hidden";
+function setAuthView(view) {
+    const views = {
+        login: {
+            heading: "Welcome to Odisha",
+            subheading: "Sign in to begin your journey",
+            tab: "login"
+        },
+        signup: {
+            heading: "Create your account",
+            subheading: "Join us to explore Odisha",
+            tab: "signup"
+        },
+        forgot: {
+            heading: "Forgot your password?",
+            subheading: "Get help getting back into your account",
+            tab: null
+        }
+    };
+    const selectedView = views[view];
+
+    document.querySelectorAll(".auth-view").forEach((form) => {
+        form.classList.toggle("active", form.id === `${view}-form`);
+    });
+    document.querySelectorAll(".auth-tab").forEach((tab) => {
+        const isActive = tab.id === `show-${selectedView.tab}-btn`;
+        tab.classList.toggle("active", isActive);
+        tab.setAttribute("aria-selected", String(isActive));
+    });
+    document.getElementById("auth-heading").textContent = selectedView.heading;
+    document.getElementById("auth-subheading").textContent = selectedView.subheading;
+    authMessage.textContent = "";
+    authMessage.classList.remove("success", "error");
 }
 
-function closeLogin() {
+function enterMainPage(user) {
+    localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify({
+        name: user.name,
+        email: user.email
+    }));
     loginModal.classList.remove("active");
     document.body.style.overflow = "auto";
+    logoutButton.hidden = false;
+    setPageInert(false);
+}
+
+function restoreLogin() {
+    const savedUser = localStorage.getItem(AUTH_STORAGE_KEY);
+    if (!savedUser) {
+        loginModal.classList.add("active");
+        document.body.style.overflow = "hidden";
+        logoutButton.hidden = true;
+        setPageInert(true);
+        focusLoginInput();
+        return;
+    }
+
+    let user;
+    try {
+        user = JSON.parse(savedUser);
+    } catch {
+        localStorage.removeItem(AUTH_STORAGE_KEY);
+        loginModal.classList.add("active");
+        document.body.style.overflow = "hidden";
+        logoutButton.hidden = true;
+        setPageInert(true);
+        focusLoginInput();
+        return;
+    }
+
+    if (typeof user.name !== "string" || typeof user.email !== "string") {
+        localStorage.removeItem(AUTH_STORAGE_KEY);
+        loginModal.classList.add("active");
+        document.body.style.overflow = "hidden";
+        logoutButton.hidden = true;
+        setPageInert(true);
+        document.getElementById("login-username").focus();
+        return;
+    }
+
+    loginModal.classList.remove("active");
+    document.body.style.overflow = "auto";
+    logoutButton.hidden = false;
+    setPageInert(false);
 }
 
 function setAuthMessage(message, type) {
@@ -90,9 +180,8 @@ async function handleLogin(event) {
 
     try {
         const result = await sendAuthRequest("/api/login", { username, password });
-        setAuthMessage(`Welcome back ${result.user.name}! Enjoy your tour.`, "success");
+        enterMainPage(result.user);
         event.target.reset();
-        setTimeout(closeLogin, 1000);
     } catch (error) {
         setAuthMessage(error.message, "error");
     }
@@ -106,11 +195,27 @@ async function handleSignup(event) {
 
     try {
         await sendAuthRequest("/api/signup", { name, email, password });
-        setAuthMessage(`Account created for ${name}. You can login now.`, "success");
         event.target.reset();
+        setAuthView("login");
+        setAuthMessage("Account created. Please log in to continue.", "success");
     } catch (error) {
         setAuthMessage(error.message, "error");
     }
+}
+
+function handleForgotPassword(event) {
+    event.preventDefault();
+    setAuthMessage("Automatic password reset is not available yet. Please contact the site administrator for help.", "error");
+}
+
+function handleLogout() {
+    localStorage.removeItem(AUTH_STORAGE_KEY);
+    loginModal.classList.add("active");
+    document.body.style.overflow = "hidden";
+    logoutButton.hidden = true;
+    setPageInert(true);
+    setAuthView("login");
+    focusLoginInput();
 }
 
 function showDestination(destinationId) {
@@ -147,16 +252,16 @@ document.querySelectorAll(".info-card").forEach((card) => {
     card.style.transition = "all 0.6s ease";
 });
 
-document.getElementById("open-login-btn").addEventListener("click", openLogin);
-document.getElementById("close-login-btn").addEventListener("click", closeLogin);
+document.getElementById("show-login-btn").addEventListener("click", () => setAuthView("login"));
+document.getElementById("show-signup-btn").addEventListener("click", () => setAuthView("signup"));
+document.getElementById("show-forgot-btn").addEventListener("click", () => setAuthView("forgot"));
+document.getElementById("back-to-login-btn").addEventListener("click", () => setAuthView("login"));
+document.getElementById("back-from-forgot-btn").addEventListener("click", () => setAuthView("login"));
 document.getElementById("login-form").addEventListener("submit", handleLogin);
 document.getElementById("signup-form").addEventListener("submit", handleSignup);
-
-loginModal.addEventListener("click", (event) => {
-    if (event.target === loginModal) {
-        closeLogin();
-    }
-});
+document.getElementById("forgot-form").addEventListener("submit", handleForgotPassword);
+logoutButton.addEventListener("click", handleLogout);
+restoreLogin();
 
 document.querySelectorAll(".nav-btn, .dest-preview").forEach((element) => {
     element.addEventListener("click", () => {

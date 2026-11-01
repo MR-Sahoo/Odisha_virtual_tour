@@ -22,80 +22,67 @@
     <div class="cursor-follower"></div>
 
     <header>
-        <div class="header-top-links">
-            <a href="./temperature.html" class="top-link-btn">🌡️ Temperature</a>
-            <a href="./quiz.html" class="top-link-btn">🧠 Quiz</a>
-        </div>
-        <button class="login-btn" id="open-login-btn">🔐 Login / Signup</button>
+        <button class="login-btn" id="logout-btn" hidden>Logout</button>
         <div class="header-content">
             <h1>🕉️ Odisha Virtual Tour 🕉️</h1>
             <p class="subtitle">Experience the Land of Jagannath - Where Tradition Meets Divinity</p>
         </div>
     </header>
 
-    <!-- Login Modal -->
-    <div class="login-modal" id="loginModal">
-        <!-- Animated Odia Character -->
-        <div class="odia-character">
-            <div class="character-body">
-                <div class="character-head"></div>
-                <div class="character-torso"></div>
-                <div class="character-arm arm-left"></div>
-                <div class="character-arm arm-right"></div>
-                <div class="character-leg leg-left"></div>
-                <div class="character-leg leg-right"></div>
-            </div>
-        </div>
-
-        <div class="login-container">
-            <button class="close-btn" id="close-login-btn">&times;</button>
-            
-            <!-- Login Section -->
-            <div class="login-section">
-                <div class="section-header">
-                    <h2>🙏 Welcome Back</h2>
-                    <p>Login to continue your journey</p>
-                </div>
-                <form id="login-form">
-                    <div class="form-group">
-                        <label for="login-username">Username or Email</label>
-                        <input type="text" id="login-username" placeholder="Enter your username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="login-password">Password</label>
-                        <input type="password" id="login-password" placeholder="Enter your password" required>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="submit-btn">Login to Explore</button>
-                    </div>
-                </form>
+    <div class="login-modal active" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="auth-heading">
+        <div class="login-container auth-card">
+            <p class="auth-brand">🕉️ ODISHA VIRTUAL TOUR</p>
+            <div class="section-header">
+                <h2 id="auth-heading">Welcome to Odisha</h2>
+                <p id="auth-subheading">Sign in to begin your journey</p>
             </div>
 
-            <!-- Signup Section -->
-            <div class="signup-section">
-                <div class="section-header">
-                    <h2>🌟 New Visitor?</h2>
-                    <p>Create your account</p>
-                </div>
-                <form id="signup-form">
-                    <div class="form-group">
-                        <label for="signup-name">Full Name</label>
-                        <input type="text" id="signup-name" placeholder="Enter your full name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="signup-email">Email</label>
-                        <input type="email" id="signup-email" placeholder="Enter your email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="signup-password">Password</label>
-                        <input type="password" id="signup-password" placeholder="Create a password" required>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="submit-btn signup-btn">Create Account</button>
-                    </div>
-                </form>
-                <p id="auth-message" class="auth-message" aria-live="polite"></p>
+            <div class="auth-tabs" role="tablist" aria-label="Account options">
+                <button class="auth-tab active" id="show-login-btn" type="button" role="tab" aria-selected="true">Login</button>
+                <button class="auth-tab" id="show-signup-btn" type="button" role="tab" aria-selected="false">Sign up</button>
             </div>
+
+            <form id="login-form" class="auth-view active">
+                <div class="form-group">
+                    <label for="login-username">Email or username</label>
+                    <input type="text" id="login-username" placeholder="Enter your email or username" autocomplete="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" placeholder="Enter your password" autocomplete="current-password" required>
+                </div>
+                <button type="submit" class="submit-btn">Login to Explore</button>
+                <button type="button" class="text-btn" id="show-forgot-btn">Forgot password?</button>
+            </form>
+
+            <form id="signup-form" class="auth-view">
+                <div class="form-group">
+                    <label for="signup-name">Full name</label>
+                    <input type="text" id="signup-name" placeholder="Enter your full name" autocomplete="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" placeholder="Enter your email" autocomplete="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" placeholder="Create a password (at least 6 characters)" autocomplete="new-password" minlength="6" required>
+                </div>
+                <button type="submit" class="submit-btn signup-btn">Create Account</button>
+                <button type="button" class="text-btn" id="back-to-login-btn">Already have an account? Login</button>
+            </form>
+
+            <form id="forgot-form" class="auth-view">
+                <p class="recovery-note">Enter your account email. Automatic password reset is not available yet; contact the site administrator for help recovering your account.</p>
+                <div class="form-group">
+                    <label for="forgot-email">Account email</label>
+                    <input type="email" id="forgot-email" placeholder="Enter your account email" autocomplete="email" required>
+                </div>
+                <button type="submit" class="submit-btn">Request help</button>
+                <button type="button" class="text-btn" id="back-from-forgot-btn">Back to login</button>
+            </form>
+
+            <p id="auth-message" class="auth-message" aria-live="polite"></p>
         </div>
     </div>
 
@@ -118,6 +105,28 @@
                     with cultural brilliance. Odisha, the land of Lord Jagannath, invites you to explore 
                     its architectural marvels, spiritual essence, and natural beauty.
                 </p>
+
+                <section class="quick-tools" aria-labelledby="quick-tools-heading">
+                    <h3 id="quick-tools-heading">Plan your Odisha experience</h3>
+                    <div class="quick-tools-grid">
+                        <a href="./temperature.html" class="quick-tool-card">
+                            <span class="quick-tool-icon" aria-hidden="true">🌡️</span>
+                            <span class="quick-tool-copy">
+                                <strong>Check the weather</strong>
+                                <span>See current temperatures across Odisha</span>
+                            </span>
+                            <span class="quick-tool-arrow" aria-hidden="true">→</span>
+                        </a>
+                        <a href="./quiz.html" class="quick-tool-card">
+                            <span class="quick-tool-icon" aria-hidden="true">🧠</span>
+                            <span class="quick-tool-copy">
+                                <strong>Take the Odisha quiz</strong>
+                                <span>Test what you know about each destination</span>
+                            </span>
+                            <span class="quick-tool-arrow" aria-hidden="true">→</span>
+                        </a>
+                    </div>
+                </section>
 
                 <div class="destination-grid">
                     <div class="dest-preview" data-destination="bhubaneswar">
